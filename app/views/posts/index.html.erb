@@ -1,0 +1,30 @@
+<div class="container">
+  <form action="">
+    <input type="text" name="content">
+    <button type="submit">Create Post</button>
+  </form>
+</div>
+
+<div class="container">
+  <table>
+    <thead>
+      <tr>
+        <th>user_id</th>
+        <th>content</th>
+        <th>created_at</th>
+        <th>updated_at</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= post.user_id %></td>
+          <td><%= post.content %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.updated_at %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
