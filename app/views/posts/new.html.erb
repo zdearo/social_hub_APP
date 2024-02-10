@@ -1,0 +1,16 @@
+<div class="my-5">
+  <%= form_with model: @post do |form| %>
+    <div class="">
+      <div class="label">
+        <span class="label-text">Conteúdo do post:</span>
+      </div>
+      <%= form.text_field :content, class: "input input-bordered w-full max-w-xs", placeholder: "..." %>
+
+      <%= form.submit "Create Post", class: "btn btn-neutral" %>
+    </div>
+
+    <% @post.errors.full_messages_for(:content).each do |message|%>
+      <div><%= message %></div>
+    <% end %>
+  <% end %>
+</div>

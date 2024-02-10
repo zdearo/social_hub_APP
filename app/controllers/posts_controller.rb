@@ -4,15 +4,20 @@ class PostsController < ApplicationController
   end
 
   def show
+    @post = Post.find params[:id]
+  end
+
+  def new
+    @post = Post.new
   end
 
   def create
     @post = Post.new post_params
 
     if @post.save
-      render :show, status: :created
+      redirect_to @post
     else
-      render json: @post.errors, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -20,11 +25,12 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    
   end
 
   private
 
   def post_params
-    params.permit(:content)
+    params.require(:post).permit(:content)
   end
 end
