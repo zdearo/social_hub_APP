@@ -1,0 +1,17 @@
+<%= turbo_frame_tag 'post' do %>
+  <h1>Editar Post</h1>
+  <%= form_with(model: @post, url: post_path(@post), method: :patch, local: true) do |form| %>
+    <div>
+      <div class="label">
+        <span class="label-text">Conteúdo do post:</span>
+      </div>
+      <div>
+        <%= form.text_area :content, class: "textarea textarea-bordered h-48 w-full max-w-xs", placeholder: "..." %>
+      </div>
+    </div>
+    <div>
+      <%= form.submit 'Update Post', class: "btn btn-neutral" %>
+      <%= link_to 'Back', posts_path, class: "btn btn-neutral" %>
+    </div>
+  <% end %>
+<% end %>

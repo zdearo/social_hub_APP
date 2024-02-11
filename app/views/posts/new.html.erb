@@ -1,10 +1,12 @@
 <div class="my-5">
   <%= form_with model: @post do |form| %>
-    <div class="">
+    <div class="container">
       <div class="label">
         <span class="label-text">Conteúdo do post:</span>
       </div>
-      <%= form.text_field :content, class: "input input-bordered w-full max-w-xs", placeholder: "..." %>
+      <div>
+        <%= form.text_area :content, class: "textarea textarea-bordered h-48 w-full max-w-xs", placeholder: "..." %>
+      </div>
 
       <%= form.submit "Create Post", class: "btn btn-neutral" %>
     </div>
