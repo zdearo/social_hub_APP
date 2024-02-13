@@ -15,7 +15,6 @@ class PostsController < ApplicationController
     @post = Post.new post_params
 
     if @post.save
-      redirect_to @post
     else
       render :new, status: :unprocessable_entity
     end
@@ -36,7 +35,10 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    
+    @post = Post.find(params[:id])
+    @post.destroy
+
+    redirect_to posts_path
   end
 
   private
