@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :posts
+  resources :posts, except: [:index]
+
+  resources :feed, only: [:index]
+
+  root "feed#index"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -2,5 +2,5 @@
   <h1><%= @post.content %></h1>
   
   <%= link_to 'Edit', edit_post_path(@post), class: "btn btn-neutral" %>
-  <%= link_to 'Back', posts_path, class: "btn btn-neutral", "data-turbo-frame" => "_top" %>
+  <%= link_to 'Back', root_path, class: "btn btn-neutral", "data-turbo-frame" => "_top" %>
 <% end %>

@@ -1,22 +1,23 @@
-<%= turbo_frame_tag "post-#{post.id}" do %>
-  <tr>
-    <td><%= post.user_id %></td>
-    <td><%= link_to post.content, post %></td>
-    <td><%= post.created_at %></td>
-    <td><%= post.updated_at %></td>
-    <td>
-      <%= link_to post_path(post.id), :class => "btn btn-error btn-square btn-sm", 
-        data: {:turbo_method => :delete, :turbo_confirm => 'Você tem certeza que deseja excluir?'}, "data-turbo-frame" => "_top" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-4 w-4" viewBox="0,0,256,256">
-          <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" 
-          stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" 
-          font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-            <g transform="scale(10.66667,10.66667)">
-              <path d="M10,2l-1,1h-6v2h18v-2h-6l-1,-1zM4.36523,7l1.70313,15h11.86328l1.70313,-15z"></path>
-            </g>
+<tr id="<%= dom_id post %>">
+  <td><%= post.user_id %></td>
+  <td><%= link_to post.content, post %></td>
+  <td><%= post.created_at %></td>
+  <td><%= post.updated_at %></td>
+  <td>
+    <%= link_to post_path(post.id), :class => "btn btn-error btn-square btn-sm", 
+    data: {:turbo_method => :delete, :turbo_confirm => 'Você tem certeza que deseja excluir?'},
+    "data-turbo-frame" => "_top" do %>
+
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-4 w-4" viewBox="0,0,256,256">
+        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" 
+        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" 
+        font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
+          <g transform="scale(10.66667,10.66667)">
+            <path d="M10,2l-1,1h-6v2h18v-2h-6l-1,-1zM4.36523,7l1.70313,15h11.86328l1.70313,-15z"></path>
           </g>
-        </svg>
-      <% end %>
-    </td>
-  </tr>
-<% end %>
+        </g>
+      </svg>
+
+    <% end %>
+  </td>
+</tr>

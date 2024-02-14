@@ -12,11 +12,14 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new post_params
+    @post = Post.create!(post_params)
 
-    if @post.save
-    else
-      render :new, status: :unprocessable_entity
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.append('posts', @post)
+      end
+
+      format.html { redirect_to feed_index_path }
     end
   end
 
@@ -38,7 +41,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
 
-    redirect_to posts_path
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: turbo_stream.remove(@post)
+      end
+
+      format.html
+    end
   end
 
   private
