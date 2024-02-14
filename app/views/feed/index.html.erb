@@ -1,4 +1,12 @@
-<%= turbo_frame_tag "new-post", :src => new_post_path, :target => "_top" %>
+<%= turbo_frame_tag "new-post", :src => new_post_path, loading: :lazy do %>
+  <div class="flex flex-col gap-1">
+    <div class="flex flex-col gap-2">
+      <div class="skeleton mt-3 h-4 w-36"></div>
+      <div class="skeleton w-80 h-48"></div>
+    </div>
+    <div class="skeleton w-24 h-12"></div>
+  </div>
+<% end %>
 
 <div class="w-full my-5 overflow-x-auto">
     <table class="table table-zebra table-pin-rows table-pin-cols">
