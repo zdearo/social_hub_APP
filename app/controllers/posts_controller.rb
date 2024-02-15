@@ -12,14 +12,17 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.create!(post_params)
+    @post = Post.new(post_params)
+    @post.user_id = current_user.id
 
     respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: turbo_stream.append('posts', @post)
-      end
+      if @post.save
+        format.turbo_stream do
+          render turbo_stream: turbo_stream.append('posts', @post)
+        end
 
-      format.html { redirect_to feed_index_path }
+        format.html { redirect_to feed_index_path }
+      end
     end
   end
 
