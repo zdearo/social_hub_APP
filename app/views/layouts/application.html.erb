@@ -28,11 +28,13 @@
         </div>
 
         <div class="navbar-end">
+          <%= user_signed_in? ? (link_to "Deslogar", destroy_user_session_path, data: {:turbo_method => :delete, :turbo_confirm => 'Você tem certeza que deseja sair?'}) : "Não Conectado" %>
         </div>
       </nav>
     </header>
 
     <main class="container mx-auto p-4">
+      <p class="notice"><%= notice %></p>
       <%= yield %>
     </main>
   </body>
