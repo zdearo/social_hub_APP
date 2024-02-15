@@ -1,3 +1,54 @@
+<div class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+    <div class="w-full card w-96 bg-neutral shadow-xl md:mt-0 sm:max-w-md xl:p-0">
+        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
+            <h1 class="text-xl font-bold leading-tight tracking-tight md:text-2xl">
+                Entre em sua conta
+            </h1>
+            <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "space-y-4 md:space-y-6") do |f| %>
+              <%= render "devise/shared/error_messages", resource: resource %>
+              <label>
+                <div class="label">
+                  <span class="label-text font-bold">Email:</span>
+                </div>
+                <%= f.email_field :email, class: "input input-bordered w-full", placeholder: "fulano@email.com", autofocus: true, autocomplete: "email" %>
+              </label>
+
+              <label>
+                <div class="label">
+                  <span class="label-text font-bold">Senha:</span>
+                </div>
+                <%= f.password_field :password, class: "input input-bordered w-full", placeholder: "••••••••", autocomplete: "current-password" %>
+              </label>
+
+              <div class="flex items-center justify-between">
+                <% if devise_mapping.rememberable? %>
+                  <div class="my-5 flex items-start">
+                    <div class="flex items-center h-5">
+                      <%= f.check_box :remember_me, class: "checkbox" %>
+                    </div>
+                    <div class="ml-3 text-sm">
+                      <%= f.label :remember_me do %>Lembrar senha<% end %>
+                    </div>
+                  </div>
+                <% end %>
+                <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
+                  <%= link_to "Esqueceu sua senha?", new_password_path(resource_name), class: "font-medium text-primary hover:underline" %>
+                <% end %>
+              </div>
+
+              <div class="flex my-5">
+                <%= f.submit "Entrar", class: "btn btn-primary w-full" %>
+              </div>
+
+              <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+                <p>Ainda não tem uma conta? <%= link_to "Cadastre", new_registration_path(resource_name), class: "font-medium text-primary hover:underline" %></p><br/>
+              <% end %>
+            <% end %>
+        </div>
+    </div>
+</div>
+
+
 <h2>Log in</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
