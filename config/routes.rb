@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'like/create'
+  get 'users/index'
   devise_for :users
   resources :posts, except: [:index]
 
