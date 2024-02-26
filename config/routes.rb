@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-  get 'like/create'
-  get 'users/index'
   devise_for :users
-  resources :posts, except: [:index]
+
+  resources :posts, except: [:index] do
+    resources :likes
+  end
 
   resources :feed, only: [:index]
 

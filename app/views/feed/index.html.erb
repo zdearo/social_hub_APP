@@ -21,9 +21,7 @@
       </thead>
       
       <tbody id="posts">
-        <% @posts.each do |post| %>
-          <%= render post %>
-        <% end %>
+        <%= render partial: 'posts/post', collection: @posts, as: :post%>
       </tbody>
     </table>
 </div>

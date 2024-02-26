@@ -4,33 +4,7 @@
   <td><%= link_to post.content, post %></td>
   <td><%= post.created_at %></td>
   <td><%= post.updated_at %></td>
-  <td>
-    <%= link_to post_path(post.id), :class => "btn btn-error btn-square btn-sm", 
-    data: {:turbo_method => :delete, :turbo_confirm => 'Você tem certeza que deseja excluir?'},
-    "data-turbo-frame" => "_top" do %>
-
-      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" class="h-4 w-4" viewBox="0,0,256,256">
-        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" 
-        stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" 
-        font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal">
-          <g transform="scale(10.66667,10.66667)">
-            <path d="M10,2l-1,1h-6v2h18v-2h-6l-1,-1zM4.36523,7l1.70313,15h11.86328l1.70313,-15z"></path>
-          </g>
-        </g>
-      </svg>
-
-    <% end %>
-  </td>
-  <td>
-    <%= link_to post_path(post.id), :class => "btn btn-error btn-square btn-sm", "data-turbo-frame" => "_top" do %>
-
-      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" stroke="none">
-        <g fill="#ffffff" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" 
-        stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" 
-        text-anchor="none" style="mix-blend-mode: normal"><path stroke-linecap="round" stroke-linejoin="round" 
-        stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 
-        7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>
-
-    <% end %>
-  </td>
+  <%= render partial: 'posts/like/counter', locals: { post: post } %>
+  <td><%= render partial: 'posts/delete', locals: {post: post} %>  </td>
+  <td><%= render partial: 'posts/like/like', locals: {post: post} %></td>
 </tr>

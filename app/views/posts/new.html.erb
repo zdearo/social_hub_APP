@@ -1,6 +1,23 @@
 <div class="my-5">
   <h1>Novo Post</h1>
-  <%= render "new_post" %>
+  <%= turbo_frame_tag "new-post", :target => "_top" do %>
+    <%= form_with :model => @post do |form| %>
+      <div class="container">
+        <div class="label">
+          <span class="label-text">Conteúdo do post:</span>
+        </div>
+        <div>
+          <%= form.text_area :content, :class => "textarea textarea-bordered h-48 w-full max-w-xs", :placeholder => "..." %>
+        </div>
+
+        <%= form.submit "Criar Post", :class => "btn btn-neutral" %>
+      </div>
+
+      <% @post.errors.full_messages_for(:content).each do |message|%>
+        <div><%= message %></div>
+      <% end %>
+    <% end %>
+  <% end %>
 </div>
 
 <%= link_to 'Back', feed_index_path, :class => "btn btn-neutral" %>
